@@ -23,12 +23,9 @@ DevOps Supervisor at a PCI DSS-regulated payments company, nine years in IT. I l
 
 ## Activity
 
-<table>
-  <tr>
-    <td width="50%"><img src="https://github-readme-stats.vercel.app/api?username=jstrebeck&show_icons=true&bg_color=181b1f&title_color=ccccdc&text_color=ccccdc&icon_color=ff780a&ring_color=73bf69&border_color=2c3235" alt="GitHub stats" width="100%"></td>
-    <td width="50%"><img src="https://streak-stats.demolab.com?user=jstrebeck&background=181b1f&border=2c3235&ring=ff780a&fire=ff780a&currStreakNum=ffffff&sideNums=ffffff&currStreakLabel=ccccdc&sideLabels=ccccdc&dates=9fa7b3&stroke=2c3235" alt="Contribution streak" width="100%"></td>
-  </tr>
-</table>
+<img src="img/contributions.svg" alt="GitHub contribution heatmap for the last 12 months" width="100%">
+
+<p align="center"><img src="https://streak-stats.demolab.com?user=jstrebeck&background=181b1f&border=2c3235&ring=ff780a&fire=ff780a&currStreakNum=ffffff&sideNums=ffffff&currStreakLabel=ccccdc&sideLabels=ccccdc&dates=9fa7b3&stroke=2c3235" alt="Contribution streak"></p>
 
 ## Delivery
 
@@ -145,4 +142,4 @@ From [strebeck.net](https://strebeck.net/posts/), refreshed daily by a GitHub Ac
 - Jan 18, 2026 · [Homelab Configuration: GitOps on Talos Kubernetes with Argo CD](https://strebeck.net/posts/homelab-configuration-terraform-ansible-and-kubernetes-on-proxmox/)
 - Oct 12, 2024 · [Fastest way to create a homelab Kubernetes cluster](https://strebeck.net/posts/homelab-kubernetes-cluster/)<!-- BLOG-POST-LIST:END -->
 
-<sub>Dashboard defined in Git. Header and stat panels are static SVGs, activity panels come from github-readme-stats and streak-stats, and the application rows and posts are reconciled daily by GitHub Actions.</sub>
+<sub>Dashboard defined in Git. Header and stat panels are static SVGs, the streak panel comes from streak-stats, and the contribution heatmap, application rows and posts are reconciled daily by GitHub Actions.</sub>

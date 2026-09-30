@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Render the Argo CD style application rows in img/apps/ from live GitHub data.
+"""Render the Argo CD style application rows in img/apps/ and the Grafana style
+contribution heatmap in img/contributions.svg from live GitHub data.
 
 Each entry in apps.json becomes one SVG row. Project, destination and path are
 declared in apps.json; description, language, stars, last push and the latest
@@ -110,6 +111,82 @@ def row(app, st):
     return "\n".join(out)
 
 
+# Grafana dark palette for the heatmap panel
+G_BG, G_PANEL, G_BORDER, G_TEXT, G_MUTED = "#111217", "#181b1f", "#2c3235", "#ccccdc", "#9fa7b3"
+G_EMPTY = "#22252b"
+G_SCALE = ["#2f5d33", "#468f45", "#5fad57", "#73bf69", "#96d98d"]
+
+
+def graphql(query, variables):
+    token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
+    body = json.dumps({"query": query, "variables": variables}).encode()
+    req = urllib.request.Request(f"{API}/graphql", data=body, method="POST",
+                                 headers={"Authorization": f"Bearer {token}",
+                                          "Content-Type": "application/json",
+                                          "User-Agent": "jstrebeck-profile-reconcile"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        out = json.load(r)
+    if out.get("errors"):
+        raise RuntimeError(out["errors"])
+    return out["data"]
+
+
+def contribution_calendar():
+    q = """query($login: String!) { user(login: $login) { contributionsCollection {
+            contributionCalendar { totalContributions
+              weeks { contributionDays { date contributionCount } } } } } }"""
+    cal = graphql(q, {"login": OWNER})["user"]["contributionsCollection"]["contributionCalendar"]
+    weeks = [[(d["date"], d["contributionCount"]) for d in w["contributionDays"]] for w in cal["weeks"]]
+    return cal["totalContributions"], weeks
+
+
+def heatmap(total, weeks):
+    cell, gap, x0, y0 = 17, 3, 72, 60
+    step = cell + gap
+    W, H = 1180, y0 + 7 * step + 34
+    # thresholds from the nonzero distribution so the scale tracks real activity
+    counts = sorted(c for w in weeks for _, c in w if c > 0)
+    def q(p):
+        return counts[min(len(counts) - 1, int(p * len(counts)))] if counts else 1
+    edges = [q(0.25), q(0.5), q(0.75), q(0.9)]
+    def color(c):
+        if c == 0:
+            return G_EMPTY
+        return G_SCALE[sum(c > e for e in edges)]
+    out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" font-family="{FONT}">',
+           f'<rect x="0.5" y="0.5" width="{W-1}" height="{H-1}" rx="3" fill="{G_PANEL}" stroke="{G_BORDER}"/>',
+           f'<text x="14" y="24" font-size="13" fill="{G_TEXT}">Contributions · last 12 months</text>',
+           f'<text x="{W-14}" y="27" font-size="22" font-weight="700" fill="#ffffff" text-anchor="end">{total:,}</text>',
+           f'<text x="{W-14}" y="42" font-size="11" fill="{G_MUTED}" text-anchor="end">contributions</text>']
+    for label, row in (("Mon", 1), ("Wed", 3), ("Fri", 5)):
+        out.append(f'<text x="{x0-10}" y="{y0 + row*step + 13}" font-size="11" fill="{G_MUTED}" text-anchor="end">{label}</text>')
+    last_month = None
+    for wi, week in enumerate(weeks):
+        x = x0 + wi * step
+        month = week[0][0][:7]
+        # Label the first week of each month, except a partial first week that
+        # would collide with the label for the month starting right after it.
+        starts_partial = wi == 0 and len(weeks) > 1 and weeks[1][0][0][:7] != month
+        if month != last_month and wi < len(weeks) - 1 and not starts_partial:
+            if True:
+                out.append(f'<text x="{x}" y="{y0-8}" font-size="11" fill="{G_MUTED}">'
+                           f'{dt.date.fromisoformat(week[0][0]).strftime("%b")}</text>')
+            last_month = month
+        for di, (date, c) in enumerate(week):
+            y = y0 + (dt.date.fromisoformat(date).weekday() + 1) % 7 * step
+            out.append(f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="3" fill="{color(c)}"><title>{date}: {c}</title></rect>')
+    # legend
+    lx = W - 14 - (len(G_SCALE) + 1) * (12 + 3) - 60
+    ly = H - 22
+    out.append(f'<text x="{lx-6}" y="{ly+10}" font-size="11" fill="{G_MUTED}" text-anchor="end">Less</text>')
+    for i, col in enumerate([G_EMPTY] + G_SCALE):
+        out.append(f'<rect x="{lx + i*15}" y="{ly}" width="12" height="12" rx="2" fill="{col}"/>')
+    out.append(f'<text x="{lx + 6*15 + 4}" y="{ly+10}" font-size="11" fill="{G_MUTED}">More</text>')
+    out.append(f'<text x="14" y="{H-12}" font-size="10.5" fill="{G_MUTED}">Source: GitHub GraphQL · rendered by scripts/reconcile.py</text>')
+    out.append('</svg>')
+    return "\n".join(out)
+
+
 def main():
     apps = json.loads((ROOT / "apps.json").read_text())
     outdir = ROOT / "img" / "apps"
@@ -118,6 +195,9 @@ def main():
         st = repo_state(app["repo"])
         (outdir / f"{app['name']}.svg").write_text(row(app, st) + "\n")
         print(f"{app['name']:26} {st['health'][0]:11} last sync {st['pushed']}  {st['language']}")
+    total, weeks = contribution_calendar()
+    (ROOT / "img" / "contributions.svg").write_text(heatmap(total, weeks) + "\n")
+    print(f"contributions              {total} over {len(weeks)} weeks")
 
 
 if __name__ == "__main__":
