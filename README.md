@@ -30,9 +30,9 @@ DevOps Supervisor at a PCI DSS-regulated payments company, nine years in IT. I l
   </tr>
 </table>
 
-## Delivery
+## Featured applications
 
-Featured repositories, presented the way Argo CD lists applications. Project, source path and destination are declared in [`apps.json`](apps.json). Health, revision, language, stars and last sync are rendered daily from the GitHub API by [`scripts/reconcile.py`](scripts/reconcile.py), so a failing CI run on any of them turns its row Degraded.
+My main projects, listed the way Argo CD lists applications. Project, source path and destination are declared in [`apps.json`](apps.json). Health, revision, language, stars and last sync are rendered daily from the GitHub API by [`scripts/reconcile.py`](scripts/reconcile.py), so a failing CI run on any of them turns its row Degraded.
 
 <a href="https://github.com/jstrebeck/Homelab-Configuration"><img src="img/apps/homelab-configuration.svg" alt="Homelab-Configuration: Healthy, Synced" width="100%"></a>
 <a href="https://github.com/jstrebeck/payments-fraud-detection"><img src="img/apps/payments-fraud-detection.svg" alt="payments-fraud-detection: Healthy, Synced" width="100%"></a>
