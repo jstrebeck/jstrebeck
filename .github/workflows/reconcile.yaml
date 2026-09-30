@@ -1,7 +1,8 @@
 # Reconciles this README from live state once a day and on demand:
 #   1. re-renders the Argo CD style application rows (img/apps/) from the
 #      GitHub API: description, language, stars, last push, latest CI result
-#   2. pulls the latest posts from strebeck.net's RSS feed into README.md
+#   2. renders the latest-post cards (img/posts/) from strebeck.net's RSS feed
+#      and writes their grid into README.md
 name: Reconcile
 
 on:
@@ -22,33 +23,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # The posts action pushes from the commit that triggered the run, so it
-      # must go first; the row commit below rebases onto whatever it pushed.
-      - name: Update latest posts
-        uses: gautamkrishnar/blog-post-workflow@v1
-        env:
-          TZ: America/Los_Angeles   # post dates are Pacific; the runner defaults to UTC
-        with:
-          feed_list: "https://strebeck.net/posts/index.xml"
-          max_post_count: 6
-          template: "$newline- $date · [$title]($url)"
-          date_format: "mmm dd, yyyy"
-          commit_message: "Update latest posts from strebeck.net"
-
-      - name: Render application rows
+      - name: Render rows, heatmap and post cards
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 scripts/reconcile.py
 
-      - name: Commit application rows
+      - name: Commit rendered panels
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add img/apps img/contributions.svg
+          git add img/apps img/contributions.svg img/posts README.md
           if git diff --cached --quiet; then
-            echo "Application rows unchanged"
+            echo "Nothing changed"
           else
-            git commit -m "Reconcile application rows"
+            git commit -m "Reconcile dashboard panels"
             git pull --rebase origin main
             git push
           fi

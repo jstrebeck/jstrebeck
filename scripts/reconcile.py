@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Render the Argo CD style application rows in img/apps/ and the Grafana style
-contribution heatmap in img/contributions.svg from live GitHub data.
+"""Render the Argo CD style application rows in img/apps/, the Grafana style
+contribution heatmap in img/contributions.svg, and the latest-post cards in
+img/posts/ (plus their grid in README.md) from live GitHub and RSS data.
 
 Each entry in apps.json becomes one SVG row. Project, destination and path are
 declared in apps.json; description, language, stars, last push and the latest
@@ -14,6 +15,8 @@ import json
 import os
 import pathlib
 import urllib.request
+import xml.etree.ElementTree as ET
+from email.utils import parsedate_to_datetime
 from xml.sax.saxutils import escape
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -187,6 +190,86 @@ def heatmap(total, weeks):
     return "\n".join(out)
 
 
+FEED = "https://strebeck.net/posts/index.xml"
+POST_COUNT = 6
+POSTS_START, POSTS_END = "<!-- POSTS:START -->", "<!-- POSTS:END -->"
+
+
+def wrap(text, width, max_lines):
+    """Greedy word wrap to roughly `width` characters, ellipsized at max_lines."""
+    words, lines, cur = text.split(), [], ""
+    for w in words:
+        if cur and len(cur) + 1 + len(w) > width:
+            lines.append(cur)
+            cur = w
+        else:
+            cur = f"{cur} {w}".strip()
+    if cur:
+        lines.append(cur)
+    if len(lines) > max_lines:
+        lines = lines[:max_lines]
+        lines[-1] = lines[-1][: width - 1].rstrip(" ,.;:") + "…"
+    return lines
+
+
+def latest_posts():
+    req = urllib.request.Request(FEED, headers={"User-Agent": "jstrebeck-profile-reconcile"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        root = ET.fromstring(r.read())
+    posts = []
+    for item in root.iter("item"):
+        posts.append({
+            "title": item.findtext("title", "").strip(),
+            "url": item.findtext("link", "").strip(),
+            "date": parsedate_to_datetime(item.findtext("pubDate")),
+            "summary": " ".join(item.findtext("description", "").split()),
+        })
+    posts.sort(key=lambda p: p["date"], reverse=True)
+    return posts[:POST_COUNT]
+
+
+def post_card(post):
+    W, H = 380, 168
+    title = wrap(post["title"], 40, 2)
+    summary = wrap(post["summary"], 60, 3)
+    out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" font-family="{FONT}">',
+           f'<rect x="0.5" y="0.5" width="{W-1}" height="{H-1}" rx="3" fill="{G_PANEL}" stroke="{G_BORDER}"/>',
+           f'<rect x="0" y="0" width="{W}" height="3" rx="1.5" fill="#ff780a"/>',
+           f'<text x="16" y="28" font-size="11" fill="{G_MUTED}">{post["date"].strftime("%b %d, %Y").upper()}</text>',
+           f'<text x="{W-16}" y="28" font-size="11" fill="{G_MUTED}" text-anchor="end">strebeck.net</text>']
+    y = 52
+    for line in title:
+        out.append(f'<text x="16" y="{y}" font-size="15" font-weight="600" fill="#ffffff">{escape(line)}</text>')
+        y += 20
+    y += 6
+    for line in summary:
+        out.append(f'<text x="16" y="{y}" font-size="12" fill="{G_TEXT}">{escape(line)}</text>')
+        y += 16
+    out.append(f'<text x="{W-16}" y="{H-14}" font-size="11.5" font-weight="600" fill="#ff780a" text-anchor="end">Read the post →</text>')
+    out.append('</svg>')
+    return "\n".join(out)
+
+
+def post_grid(posts, cols=3):
+    cells = []
+    for i, post in enumerate(posts, 1):
+        cells.append(f'    <td width="{100//cols}%" valign="top"><a href="{post["url"]}">'
+                     f'<img src="img/posts/post-{i}.svg" alt="{escape(post["title"])}" width="100%"></a></td>')
+    rows = ["  <tr>\n" + "\n".join(cells[i:i+cols]) + "\n  </tr>" for i in range(0, len(cells), cols)]
+    return "<table>\n" + "\n".join(rows) + "\n</table>"
+
+
+def write_posts(posts):
+    outdir = ROOT / "img" / "posts"
+    outdir.mkdir(parents=True, exist_ok=True)
+    for i, post in enumerate(posts, 1):
+        (outdir / f"post-{i}.svg").write_text(post_card(post) + "\n")
+    readme = ROOT / "README.md"
+    text = readme.read_text()
+    a, b = text.index(POSTS_START) + len(POSTS_START), text.index(POSTS_END)
+    readme.write_text(text[:a] + "\n" + post_grid(posts) + "\n" + text[b:])
+
+
 def main():
     apps = json.loads((ROOT / "apps.json").read_text())
     outdir = ROOT / "img" / "apps"
@@ -198,6 +281,9 @@ def main():
     total, weeks = contribution_calendar()
     (ROOT / "img" / "contributions.svg").write_text(heatmap(total, weeks) + "\n")
     print(f"contributions              {total} over {len(weeks)} weeks")
+    posts = latest_posts()
+    write_posts(posts)
+    print(f"posts                      {len(posts)} cards, newest {posts[0]['date']:%Y-%m-%d}")
 
 
 if __name__ == "__main__":

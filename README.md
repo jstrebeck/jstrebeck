@@ -42,68 +42,6 @@ Featured repositories, presented the way Argo CD lists applications. Project, so
 <a href="https://github.com/jstrebeck/strebeck.net"><img src="img/apps/strebeck-net.svg" alt="strebeck.net: Healthy, Synced" width="100%"></a>
 <a href="https://github.com/jstrebeck/Dotfiles"><img src="img/apps/dotfiles.svg" alt="Dotfiles: Healthy, Synced" width="100%"></a>
 
-## Application tree
-
-The homelab runs Argo CD's app-of-apps pattern. One root Application, applied once by hand, owns every platform component and every workload. This is that tree, the same way Argo CD draws it, with the repos each application syncs from.
-
-```mermaid
-%%{init: {"theme": "dark", "themeVariables": {"fontFamily": "Inter, -apple-system, Segoe UI, Roboto, sans-serif", "primaryColor": "#262626", "primaryBorderColor": "#3a3a3a", "primaryTextColor": "#e6e6e6", "lineColor": "#8fa4b1", "clusterBkg": "#1c1c1c", "clusterBorder": "#3a3a3a", "edgeLabelBackground": "#1c1c1c"}}}%%
-flowchart LR
-  ROOT["root<br/>app of apps · Healthy · Synced<br/>jstrebeck/Homelab-Configuration"]
-  subgraph platform["AppProject: platform  ·  source: Homelab-Configuration"]
-    direction TB
-    ARGO["argocd"]
-    METAL["metallb"]
-    CEPH["rook-ceph"]
-    MON["kube-prometheus-stack"]
-    CM["cert-manager"]
-    KS["kserve"]
-    SW["seaweedfs"]
-    ML["mlflow"]
-    REG["registry"]
-    CF["cloudflared"]
-  end
-  subgraph workloads["AppProjects: workloads  ·  source: their own repos"]
-    direction TB
-    PFD["payments-fraud-detection<br/>deploy/overlays/homelab"]
-    GSP["game-server-platform<br/>deployment/"]
-    DF["demand-forecast-mlops<br/>pipelines/"]
-    SF["strebflow<br/>k8s/"]
-  end
-  subgraph off["Outside the cluster"]
-    direction TB
-    WEB["strebeck.net<br/>Hugo on GitHub Pages"]
-    CRP["Cloud-Resume-Project<br/>AWS, built by a self-hosted runner on the lab"]
-  end
-  ROOT --> ARGO
-  ROOT --> METAL
-  ROOT --> CEPH
-  ROOT --> MON
-  ROOT --> CM
-  ROOT --> KS
-  ROOT --> SW
-  ROOT --> ML
-  ROOT --> REG
-  ROOT --> CF
-  ROOT --> PFD
-  ROOT --> GSP
-  ROOT --> DF
-  ROOT --> SF
-  KS -. serves the champion model .-> PFD
-  ML -. tracking and registry .-> DF
-  METAL -. LoadBalancer IPs .-> GSP
-  ROOT -. write-ups .-> WEB
-  ROOT -. Actions runner VM .-> CRP
-  classDef root fill:#1b2e27,stroke:#18be94,color:#ffffff
-  classDef plat fill:#262626,stroke:#3a3a3a,color:#e6e6e6
-  classDef work fill:#262626,stroke:#7fb3ff,color:#e6e6e6
-  classDef ext fill:#1c1c1c,stroke:#3a3a3a,color:#8fa4b1
-  class ROOT root
-  class ARGO,METAL,CEPH,MON,CM,KS,SW,ML,REG,CF plat
-  class PFD,GSP,DF,SF work
-  class WEB,CRP ext
-```
-
 ## Linux desktop
 
 I do all of my work from a Linux desktop and keep the whole environment in Git so a fresh machine is familiar in about half an hour.
@@ -135,14 +73,21 @@ I do all of my work from a Linux desktop and keep the whole environment in Git s
 
 ## Latest posts
 
-From [strebeck.net](https://strebeck.net/posts/), refreshed daily by a GitHub Action from the site's RSS feed.
+From [strebeck.net](https://strebeck.net/posts/). The cards are rendered daily from the site's RSS feed by the same reconcile workflow.
 
-<!-- BLOG-POST-LIST:START -->
-- May 08, 2026 · [Dotfiles: A Reproducible Sway Desktop With GNU Stow](https://strebeck.net/posts/dotfiles-a-reproducible-sway-desktop-with-gnu-stow/)
-- Apr 04, 2026 · [Training and Monitoring ML Models With PyTorch, MLflow, and Kubeflow](https://strebeck.net/posts/training-and-monitoring-ml-models-with-pytorch-mlflow-and-kubeflow/)
-- Mar 29, 2026 · [StrebFlow: An Autonomous Coding Pipeline Built on LangGraph](https://strebeck.net/posts/strebflow-an-autonomous-coding-pipeline-built-on-langgraph/)
-- Jan 25, 2026 · [Game Server Platform: Multi-Tenant Minecraft Hosting on Kubernetes](https://strebeck.net/posts/game-server-platform-multi-tenant-minecraft-hosting-on-kubernetes/)
-- Jan 18, 2026 · [Homelab Configuration: GitOps on Talos Kubernetes with Argo CD](https://strebeck.net/posts/homelab-configuration-terraform-ansible-and-kubernetes-on-proxmox/)
-- Oct 12, 2024 · [Fastest way to create a homelab Kubernetes cluster](https://strebeck.net/posts/homelab-kubernetes-cluster/)<!-- BLOG-POST-LIST:END -->
+<!-- POSTS:START -->
+<table>
+  <tr>
+    <td width="33%" valign="top"><a href="https://strebeck.net/posts/dotfiles-a-reproducible-sway-desktop-with-gnu-stow/"><img src="img/posts/post-1.svg" alt="Dotfiles: A Reproducible Sway Desktop With GNU Stow" width="100%"></a></td>
+    <td width="33%" valign="top"><a href="https://strebeck.net/posts/training-and-monitoring-ml-models-with-pytorch-mlflow-and-kubeflow/"><img src="img/posts/post-2.svg" alt="Training and Monitoring ML Models With PyTorch, MLflow, and Kubeflow" width="100%"></a></td>
+    <td width="33%" valign="top"><a href="https://strebeck.net/posts/strebflow-an-autonomous-coding-pipeline-built-on-langgraph/"><img src="img/posts/post-3.svg" alt="StrebFlow: An Autonomous Coding Pipeline Built on LangGraph" width="100%"></a></td>
+  </tr>
+  <tr>
+    <td width="33%" valign="top"><a href="https://strebeck.net/posts/game-server-platform-multi-tenant-minecraft-hosting-on-kubernetes/"><img src="img/posts/post-4.svg" alt="Game Server Platform: Multi-Tenant Minecraft Hosting on Kubernetes" width="100%"></a></td>
+    <td width="33%" valign="top"><a href="https://strebeck.net/posts/homelab-configuration-terraform-ansible-and-kubernetes-on-proxmox/"><img src="img/posts/post-5.svg" alt="Homelab Configuration: GitOps on Talos Kubernetes with Argo CD" width="100%"></a></td>
+    <td width="33%" valign="top"><a href="https://strebeck.net/posts/homelab-kubernetes-cluster/"><img src="img/posts/post-6.svg" alt="Fastest way to create a homelab Kubernetes cluster" width="100%"></a></td>
+  </tr>
+</table>
+<!-- POSTS:END -->
 
-<sub>Dashboard defined in Git. Header and stat panels are static SVGs, the streak panel comes from streak-stats, and the contribution heatmap, application rows and posts are reconciled daily by GitHub Actions.</sub>
+<sub>Dashboard defined in Git. Header and stat panels are static SVGs, the streak panel comes from streak-stats, and the contribution heatmap, application rows and post cards are reconciled daily by GitHub Actions.</sub>
