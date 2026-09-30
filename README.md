@@ -13,7 +13,7 @@
 
 ## About
 
-DevOps Supervisor at a PCI DSS-regulated payments company, nine years in IT. I led the migration of a monolithic payments platform to microservices on Amazon EKS, cutting AWS costs 12%, built a Backstage developer platform that put deployments in every engineer's hands, and operate ML fraud detection on SageMaker. At home I run a four-node bare-metal Kubernetes cluster that is managed entirely through Git, and most of the projects below are built on top of it.
+DevOps Supervisor at a PCI DSS-regulated payments company, nine years in IT. I led the migration of a monolithic payments platform to microservices on Amazon EKS, cutting AWS costs 12%. At home I run a four-node bare-metal Kubernetes cluster that is managed entirely through Git, and most of the projects below are built on top of it.
 
 **Hands-on with:** Kubernetes, Argo CD, Terraform, AWS, Talos Linux, Rook-Ceph, Prometheus and Grafana, MLflow, KServe, Kubeflow, and self-hosted LLM inference.
 
@@ -23,9 +23,12 @@ DevOps Supervisor at a PCI DSS-regulated payments company, nine years in IT. I l
 
 ## Activity
 
-<img src="img/contributions.svg" alt="GitHub contribution heatmap for the last 12 months" width="100%">
-
-<p align="center"><img src="https://streak-stats.demolab.com?user=jstrebeck&background=181b1f&border=2c3235&ring=ff780a&fire=ff780a&currStreakNum=ffffff&sideNums=ffffff&currStreakLabel=ccccdc&sideLabels=ccccdc&dates=9fa7b3&stroke=2c3235" alt="Contribution streak"></p>
+<table>
+  <tr>
+    <td width="66%" valign="top"><img src="img/contributions.svg" alt="GitHub contribution heatmap for the last 12 months" width="100%"></td>
+    <td width="34%" valign="top"><img src="https://streak-stats.demolab.com?user=jstrebeck&background=181b1f&border=2c3235&ring=ff780a&fire=ff780a&currStreakNum=ffffff&sideNums=ffffff&currStreakLabel=ccccdc&sideLabels=ccccdc&dates=9fa7b3&stroke=2c3235" alt="Contribution streak" width="100%"></td>
+  </tr>
+</table>
 
 ## Delivery
 
