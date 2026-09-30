@@ -26,6 +26,8 @@ jobs:
       # must go first; the row commit below rebases onto whatever it pushed.
       - name: Update latest posts
         uses: gautamkrishnar/blog-post-workflow@v1
+        env:
+          TZ: America/Los_Angeles   # post dates are Pacific; the runner defaults to UTC
         with:
           feed_list: "https://strebeck.net/posts/index.xml"
           max_post_count: 6
