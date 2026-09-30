@@ -1,0 +1,16 @@
+[
+  {"name": "homelab-configuration", "repo": "Homelab-Configuration", "project": "platform",
+   "destination": "in-cluster/argocd", "path": "Kubernetes/argocd/apps", "note": "app of apps: the cluster and every platform service"},
+  {"name": "payments-fraud-detection", "repo": "payments-fraud-detection", "project": "fraud",
+   "destination": "in-cluster/fraud", "path": "deploy/overlays/homelab", "note": "real-time fraud scoring on KServe, retraining through MLflow"},
+  {"name": "game-server-platform", "repo": "game-server-platform", "project": "platform",
+   "destination": "in-cluster/watch2play", "path": "deployment", "note": "multi-tenant Minecraft hosting SaaS"},
+  {"name": "demand-forecast-mlops", "repo": "demand-forecast-mlops", "project": "mlops",
+   "destination": "in-cluster/mlops", "path": "pipelines", "note": "PyTorch demand forecasting with MLflow and Kubeflow"},
+  {"name": "strebflow", "repo": "strebflow", "project": "platform",
+   "destination": "in-cluster/strebflow", "path": "k8s", "note": "autonomous coding pipeline on LangGraph, run as a Job"},
+  {"name": "strebeck-net", "repo": "strebeck.net", "project": "web",
+   "destination": "github-pages/strebeck.net", "path": "content", "note": "the blog, Hugo built and deployed by Actions"},
+  {"name": "dotfiles", "repo": "Dotfiles", "project": "workstation",
+   "destination": "desktop/~", "path": "stow packages", "note": "Sway desktop, shell and scripts, reconciled with GNU Stow"}
+]

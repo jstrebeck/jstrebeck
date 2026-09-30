@@ -1,0 +1,45 @@
+# Reconciles this README from live state once a day and on demand:
+#   1. re-renders the Argo CD style application rows (img/apps/) from the
+#      GitHub API: description, language, stars, last push, latest CI result
+#   2. pulls the latest posts from strebeck.net's RSS feed into README.md
+name: Reconcile
+
+on:
+  schedule:
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - apps.json
+      - scripts/reconcile.py
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Render application rows
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/reconcile.py
+
+      - name: Commit application rows
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add img/apps
+          git diff --cached --quiet || git commit -m "Reconcile application rows"
+          git push
+
+      - name: Update latest posts
+        uses: gautamkrishnar/blog-post-workflow@v1
+        with:
+          feed_list: "https://strebeck.net/posts/index.xml"
+          max_post_count: 6
+          template: "$newline- $date · [$title]($url)"
+          date_format: "mmm dd, yyyy"
+          commit_message: "Update latest posts from strebeck.net"

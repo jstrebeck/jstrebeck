@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="150" viewBox="0 0 1180 150" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<rect x="0.5" y="0.5" width="184" height="149" rx="3" fill="#181b1f" stroke="#2c3235"/>
+<text x="12" y="24" font-size="13" fill="#ccccdc">Role</text>
+<text x="167" y="24" font-size="12" fill="#9fa7b3">ⓘ</text>
+<rect x="8" y="36" width="169" height="106" rx="2" fill="#5794f2"/>
+<text x="92.5" y="85" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">DevOps</text>
+<text x="92.5" y="113" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">Supervisor</text>
+<rect x="199.5" y="0.5" width="184" height="149" rx="3" fill="#181b1f" stroke="#2c3235"/>
+<text x="211" y="24" font-size="13" fill="#ccccdc">Years in IT</text>
+<text x="366" y="24" font-size="12" fill="#9fa7b3">ⓘ</text>
+<rect x="207" y="36" width="169" height="106" rx="2" fill="#73bf69"/>
+<text x="291.5" y="105" font-size="44" font-weight="700" fill="#ffffff" text-anchor="middle">9</text>
+<rect x="398.5" y="0.5" width="184" height="149" rx="3" fill="#181b1f" stroke="#2c3235"/>
+<text x="410" y="24" font-size="13" fill="#ccccdc">AWS certifications</text>
+<text x="565" y="24" font-size="12" fill="#9fa7b3">ⓘ</text>
+<rect x="406" y="36" width="169" height="106" rx="2" fill="#ff780a"/>
+<text x="490.5" y="105" font-size="44" font-weight="700" fill="#ffffff" text-anchor="middle">7</text>
+<rect x="597.5" y="0.5" width="184" height="149" rx="3" fill="#181b1f" stroke="#2c3235"/>
+<text x="609" y="24" font-size="13" fill="#ccccdc">CKA</text>
+<text x="764" y="24" font-size="12" fill="#9fa7b3">ⓘ</text>
+<rect x="605" y="36" width="169" height="106" rx="2" fill="#73bf69"/>
+<text x="689.5" y="101" font-size="34" font-weight="700" fill="#ffffff" text-anchor="middle">PASS</text>
+<rect x="796.5" y="0.5" width="184" height="149" rx="3" fill="#181b1f" stroke="#2c3235"/>
+<text x="808" y="24" font-size="13" fill="#ccccdc">Homelab nodes ready</text>
+<text x="963" y="24" font-size="12" fill="#9fa7b3">ⓘ</text>
+<rect x="804" y="36" width="169" height="106" rx="2" fill="#73bf69"/>
+<text x="888.5" y="105" font-size="44" font-weight="700" fill="#ffffff" text-anchor="middle">4</text>
+<rect x="995.5" y="0.5" width="184" height="149" rx="3" fill="#181b1f" stroke="#2c3235"/>
+<text x="1007" y="24" font-size="13" fill="#ccccdc">Argo CD apps synced</text>
+<text x="1162" y="24" font-size="12" fill="#9fa7b3">ⓘ</text>
+<rect x="1003" y="36" width="169" height="106" rx="2" fill="#73bf69"/>
+<text x="1087.5" y="105" font-size="44" font-weight="700" fill="#ffffff" text-anchor="middle">19</text>
+</svg>

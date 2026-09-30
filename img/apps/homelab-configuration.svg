@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="74" viewBox="0 0 1180 74" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<rect width="1180" height="74" fill="#1c1c1c"/>
+<rect x="0.5" y="0.5" width="1179" height="73" rx="2" fill="#262626" stroke="#3a3a3a"/>
+<rect x="0" y="0" width="4" height="74" fill="#18be94"/>
+<text x="22" y="28" font-size="12" fill="#8fa4b1">Project:</text>
+<text x="84" y="28" font-size="12.5" font-weight="400" fill="#e6e6e6">platform</text>
+<text x="22" y="52" font-size="12" fill="#8fa4b1">Name:</text>
+<text x="84" y="52" font-size="12.5" font-weight="600" fill="#7fb3ff">homelab-configuration</text>
+<text x="330" y="28" font-size="12" fill="#8fa4b1">Source:</text>
+<text x="410" y="28" font-size="12.5" font-weight="400" fill="#e6e6e6">github.com/jstrebeck/Homelab-Configuration/Kubernetes/argocd/apps</text>
+<text x="330" y="52" font-size="12" fill="#8fa4b1">Destination:</text>
+<text x="410" y="52" font-size="12.5" font-weight="400" fill="#e6e6e6">in-cluster/argocd</text>
+<rect x="868" y="16" width="44" height="18" rx="9" fill="#1c1c1c" stroke="#3a3a3a"/>
+<text x="890.0" y="29" font-size="11.5" fill="#e6e6e6" text-anchor="middle">main</text>
+<path transform="translate(960,13) scale(0.55)" fill="#18be94" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+<text x="980" y="28" font-size="12.5" font-weight="600" fill="#18be94">Healthy</text>
+<circle cx="966" cy="47" r="6" fill="#18be94"/><polyline points="963,47.2 965.3,49.5 969.2,44.8" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="980" y="52" font-size="12.5" font-weight="600" fill="#18be94">Synced</text>
+<text x="1164" y="66" font-size="10.5" fill="#8fa4b1" text-anchor="end">last sync 2026-09-30  ·  Python</text>
+<text x="410" y="66" font-size="10.5" fill="#8fa4b1">app of apps: the cluster and every platform service</text>
+</svg>
