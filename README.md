@@ -138,11 +138,11 @@ I do all of my work from a Linux desktop and keep the whole environment in Git s
 From [strebeck.net](https://strebeck.net/posts/), refreshed daily by a GitHub Action from the site's RSS feed.
 
 <!-- BLOG-POST-LIST:START -->
-- May 09, 2026 · [Dotfiles: A Reproducible Sway Desktop With GNU Stow](https://strebeck.net/posts/dotfiles-a-reproducible-sway-desktop-with-gnu-stow/)
+- May 08, 2026 · [Dotfiles: A Reproducible Sway Desktop With GNU Stow](https://strebeck.net/posts/dotfiles-a-reproducible-sway-desktop-with-gnu-stow/)
 - Apr 04, 2026 · [Training and Monitoring ML Models With PyTorch, MLflow, and Kubeflow](https://strebeck.net/posts/training-and-monitoring-ml-models-with-pytorch-mlflow-and-kubeflow/)
 - Mar 29, 2026 · [StrebFlow: An Autonomous Coding Pipeline Built on LangGraph](https://strebeck.net/posts/strebflow-an-autonomous-coding-pipeline-built-on-langgraph/)
-- Jan 26, 2026 · [Game Server Platform: Multi-Tenant Minecraft Hosting on Kubernetes](https://strebeck.net/posts/game-server-platform-multi-tenant-minecraft-hosting-on-kubernetes/)
-- Jan 19, 2026 · [Homelab Configuration: GitOps on Talos Kubernetes with Argo CD](https://strebeck.net/posts/homelab-configuration-terraform-ansible-and-kubernetes-on-proxmox/)
+- Jan 25, 2026 · [Game Server Platform: Multi-Tenant Minecraft Hosting on Kubernetes](https://strebeck.net/posts/game-server-platform-multi-tenant-minecraft-hosting-on-kubernetes/)
+- Jan 18, 2026 · [Homelab Configuration: GitOps on Talos Kubernetes with Argo CD](https://strebeck.net/posts/homelab-configuration-terraform-ansible-and-kubernetes-on-proxmox/)
 - Oct 12, 2024 · [Fastest way to create a homelab Kubernetes cluster](https://strebeck.net/posts/homelab-kubernetes-cluster/)<!-- BLOG-POST-LIST:END -->
 
 <sub>Dashboard defined in Git. Header and stat panels are static SVGs, activity panels come from github-readme-stats and streak-stats, and the application rows and posts are reconciled daily by GitHub Actions.</sub>
