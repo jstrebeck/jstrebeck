@@ -78,14 +78,14 @@ From [strebeck.net](https://strebeck.net/posts/). The cards are rendered daily f
 <!-- POSTS:START -->
 <table>
   <tr>
-    <td width="33%" valign="top"><a href="https://strebeck.net/posts/dotfiles-a-reproducible-sway-desktop-with-gnu-stow/"><img src="img/posts/post-1.svg" alt="Dotfiles: A Reproducible Sway Desktop With GNU Stow" width="100%"></a></td>
-    <td width="33%" valign="top"><a href="https://strebeck.net/posts/training-and-monitoring-ml-models-with-pytorch-mlflow-and-kubeflow/"><img src="img/posts/post-2.svg" alt="Training and Monitoring ML Models With PyTorch, MLflow, and Kubeflow" width="100%"></a></td>
-    <td width="33%" valign="top"><a href="https://strebeck.net/posts/strebflow-an-autonomous-coding-pipeline-built-on-langgraph/"><img src="img/posts/post-3.svg" alt="StrebFlow: An Autonomous Coding Pipeline Built on LangGraph" width="100%"></a></td>
+    <td width="33%" valign="top"><a href="https://strebeck.net/posts/payments-fraud-detection-real-time-scoring-with-automated-retraining/"><img src="img/posts/post-1.svg" alt="Payments Fraud Detection: Real-Time Scoring With Automated Retraining on Kubernetes" width="100%"></a></td>
+    <td width="33%" valign="top"><a href="https://strebeck.net/posts/dotfiles-a-reproducible-sway-desktop-with-gnu-stow/"><img src="img/posts/post-2.svg" alt="Dotfiles: A Reproducible Sway Desktop With GNU Stow" width="100%"></a></td>
+    <td width="33%" valign="top"><a href="https://strebeck.net/posts/training-and-monitoring-ml-models-with-pytorch-mlflow-and-kubeflow/"><img src="img/posts/post-3.svg" alt="Training and Monitoring ML Models With PyTorch, MLflow, and Kubeflow" width="100%"></a></td>
   </tr>
   <tr>
-    <td width="33%" valign="top"><a href="https://strebeck.net/posts/game-server-platform-multi-tenant-minecraft-hosting-on-kubernetes/"><img src="img/posts/post-4.svg" alt="Game Server Platform: Multi-Tenant Minecraft Hosting on Kubernetes" width="100%"></a></td>
-    <td width="33%" valign="top"><a href="https://strebeck.net/posts/homelab-configuration-terraform-ansible-and-kubernetes-on-proxmox/"><img src="img/posts/post-5.svg" alt="Homelab Configuration: GitOps on Talos Kubernetes with Argo CD" width="100%"></a></td>
-    <td width="33%" valign="top"><a href="https://strebeck.net/posts/homelab-kubernetes-cluster/"><img src="img/posts/post-6.svg" alt="Fastest way to create a homelab Kubernetes cluster" width="100%"></a></td>
+    <td width="33%" valign="top"><a href="https://strebeck.net/posts/strebflow-an-autonomous-coding-pipeline-built-on-langgraph/"><img src="img/posts/post-4.svg" alt="StrebFlow: An Autonomous Coding Pipeline Built on LangGraph" width="100%"></a></td>
+    <td width="33%" valign="top"><a href="https://strebeck.net/posts/game-server-platform-multi-tenant-minecraft-hosting-on-kubernetes/"><img src="img/posts/post-5.svg" alt="Game Server Platform: Multi-Tenant Minecraft Hosting on Kubernetes" width="100%"></a></td>
+    <td width="33%" valign="top"><a href="https://strebeck.net/posts/homelab-configuration-terraform-ansible-and-kubernetes-on-proxmox/"><img src="img/posts/post-6.svg" alt="Homelab Configuration: GitOps on Talos Kubernetes with Argo CD" width="100%"></a></td>
   </tr>
 </table>
 <!-- POSTS:END -->

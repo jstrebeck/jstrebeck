@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="380" height="168" viewBox="0 0 380 168" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
 <rect x="0.5" y="0.5" width="379" height="167" rx="3" fill="#181b1f" stroke="#2c3235"/>
 <rect x="0" y="0" width="380" height="3" rx="1.5" fill="#ff780a"/>
-<text x="16" y="28" font-size="11" fill="#9fa7b3">MAY 08, 2026</text>
+<text x="16" y="28" font-size="11" fill="#9fa7b3">SEP 30, 2026</text>
 <text x="364" y="28" font-size="11" fill="#9fa7b3" text-anchor="end">strebeck.net</text>
-<text x="16" y="52" font-size="15" font-weight="600" fill="#ffffff">Dotfiles: A Reproducible Sway Desktop</text>
-<text x="16" y="72" font-size="15" font-weight="600" fill="#ffffff">With GNU Stow</text>
-<text x="16" y="98" font-size="12" fill="#ccccdc">How I manage a Sway on Wayland desktop, shell, and a set of</text>
-<text x="16" y="114" font-size="12" fill="#ccccdc">AWS helper scripts as a single repo that can rebuild a</text>
-<text x="16" y="130" font-size="12" fill="#ccccdc">workstation from scratch, with a branch per machine.</text>
+<text x="16" y="52" font-size="15" font-weight="600" fill="#ffffff">Payments Fraud Detection: Real-Time</text>
+<text x="16" y="72" font-size="15" font-weight="600" fill="#ffffff">Scoring With Automated Retraining on…</text>
+<text x="16" y="98" font-size="12" fill="#ccccdc">A synthetic payments platform that scores every transaction</text>
+<text x="16" y="114" font-size="12" fill="#ccccdc">for fraud in real time, with training, registry, serving,</text>
+<text x="16" y="130" font-size="12" fill="#ccccdc">monitoring, and alert-driven retraining automated end to en…</text>
 <text x="364" y="154" font-size="11.5" font-weight="600" fill="#ff780a" text-anchor="end">Read the post →</text>
 </svg>

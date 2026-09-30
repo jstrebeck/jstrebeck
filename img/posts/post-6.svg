@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="380" height="168" viewBox="0 0 380 168" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
 <rect x="0.5" y="0.5" width="379" height="167" rx="3" fill="#181b1f" stroke="#2c3235"/>
 <rect x="0" y="0" width="380" height="3" rx="1.5" fill="#ff780a"/>
-<text x="16" y="28" font-size="11" fill="#9fa7b3">OCT 12, 2024</text>
+<text x="16" y="28" font-size="11" fill="#9fa7b3">JAN 18, 2026</text>
 <text x="364" y="28" font-size="11" fill="#9fa7b3" text-anchor="end">strebeck.net</text>
-<text x="16" y="52" font-size="15" font-weight="600" fill="#ffffff">Fastest way to create a homelab</text>
-<text x="16" y="72" font-size="15" font-weight="600" fill="#ffffff">Kubernetes cluster</text>
-<text x="16" y="98" font-size="12" fill="#ccccdc">&lt;p&gt;If you&amp;rsquo;ve been wanting to run Kubernetes at home</text>
-<text x="16" y="114" font-size="12" fill="#ccccdc">but dread the idea of manually bootstrapping kubeadm on a</text>
-<text x="16" y="130" font-size="12" fill="#ccccdc">handful of VMs, &lt;a href="https://www.talos.dev"…</text>
+<text x="16" y="52" font-size="15" font-weight="600" fill="#ffffff">Homelab Configuration: GitOps on Talos</text>
+<text x="16" y="72" font-size="15" font-weight="600" fill="#ffffff">Kubernetes with Argo CD</text>
+<text x="16" y="98" font-size="12" fill="#ccccdc">Everything my homelab cluster runs is declared in one</text>
+<text x="16" y="114" font-size="12" fill="#ccccdc">repository and delivered by Argo CD. Merging to main is the</text>
+<text x="16" y="130" font-size="12" fill="#ccccdc">deployment. This is how the platform is built, how the…</text>
 <text x="364" y="154" font-size="11.5" font-weight="600" fill="#ff780a" text-anchor="end">Read the post →</text>
 </svg>
